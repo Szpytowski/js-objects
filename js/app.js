@@ -48,9 +48,9 @@ console.log(isObject(10)); // false
 console.log(isObject(null)); // false
 
 // 4
-function removeProperty(user4, key) {
-    if (user4.hasOwnProperty(key)) {
-        delete user4[key];
+function removeProperty(user, key) {
+    if (user.hasOwnProperty(key)) {
+        delete user[key];
         return true;
     }
     return false;
@@ -122,10 +122,10 @@ console.log(getCityInformation({
 })); // Output: Warsaw is in Poland and has an area of 517 square kilometers
 
 // 9
-function getUserCopy(user9) {
+function getUserCopy(user) {
     return {
-        firstName: user9.firstName,
-        lastName: user9.lastName
+        firstName: user.firstName,
+        lastName: user.lastName
     } ;
 }
 
@@ -216,7 +216,8 @@ function validateIfObjectIsAUser(object) {
         typeof object.firstName === 'string' &&
         typeof object.lastName === 'string' &&
         typeof object.age === 'number' &&
-        object.greet() === `Hi, I'm ${object.firstName} ${object.lastName}!`
+        object.greet().includes(object.firstName) && // i changed it so it only searches the first and last name, this is what you meant with 'be more generic' ?
+        object.greet().includes(object.lastName) // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
     ) {
         return true;
     }
